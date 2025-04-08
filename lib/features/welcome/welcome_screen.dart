@@ -7,7 +7,7 @@ import 'package:vision_ex_digital_assignment_manula/utils/font.dart';
 
 import '../../core/reusable/custom_button.dart';
 import '../../core/reusable/typing_text.dart';
-import '../search_and_category_1/home_screen.dart';
+import '../search_and_category_1/search_and_category_1_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -117,7 +117,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
                       // Create account button
                       Padding(padding: EdgeInsets.symmetric(horizontal: 20.0.w), child: CustomButton(text: 'Create an account', onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SearchAndCategory1Screen(),));
                       })),
 
                       SizedBox(height: 10.h),

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/custom_header.dart';
+import 'package:vision_ex_digital_assignment_manula/core/reusable/custom_header.dart';
 import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/featured_section.dart';
 import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/new_offers_section.dart';
 import 'package:vision_ex_digital_assignment_manula/utils/colors.dart';
 
 import '../category_3/category_3_screen.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class SearchAndCategory1Screen extends StatefulWidget {
+  const SearchAndCategory1Screen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<SearchAndCategory1Screen> createState() => _SearchAndCategory1ScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+class _SearchAndCategory1ScreenState extends State<SearchAndCategory1Screen> with TickerProviderStateMixin {
   // Animation controllers
   late AnimationController _headerAnimationController;
   late Animation<Offset> _headerSlideAnimation;

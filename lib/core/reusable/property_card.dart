@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../utils/colors.dart';
-import '../../../utils/font.dart';
+import '../../utils/colors.dart';
+import '../../utils/font.dart';
 
 class PropertyCard extends StatelessWidget {
   final Map<String, String> property;

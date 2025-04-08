@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/property_card.dart';
+import 'package:vision_ex_digital_assignment_manula/core/reusable/property_card.dart';
 
 import '../../../utils/colors.dart';
 import '../../../utils/font.dart';
