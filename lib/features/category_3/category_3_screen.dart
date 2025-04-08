@@ -5,16 +5,16 @@ import 'package:vision_ex_digital_assignment_manula/features/search_and_category
 import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/new_offers_section.dart';
 import 'package:vision_ex_digital_assignment_manula/utils/colors.dart';
 
-import '../category_3/category_3_screen.dart';
+import '../../utils/font.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class Category3Screen extends StatefulWidget {
+  const Category3Screen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<Category3Screen> createState() => _Category3ScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+class _Category3ScreenState extends State<Category3Screen> with TickerProviderStateMixin {
   // Animation controllers
   late AnimationController _headerAnimationController;
   late Animation<Offset> _headerSlideAnimation;
@@ -79,19 +79,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           SlideTransition(
             position: _headerSlideAnimation,
             child: CustomHeader(
-              userName: 'Stanislav',
-              avatarText: 'S',
-              hasNotification: true,
               onMenuTap: () {
                 debugPrint('Menu tapped');
-              },
-              onAvatarTap: () {
-                debugPrint('Avatar tapped');
               },
               onSearchTap: () {
                 debugPrint('Search bar tapped');
               },
-              backgroundColor: kYellowColor,
+              isCategory3Screen: true,
             ),
           ),
 
@@ -101,28 +95,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 position: _offersSlideAnimation,
                 child: Column(
                   children: [
-                    SizedBox(height: 4.h),
-
-                    // Featured section
-                    FeaturedSection(
-                      onViewAllTap: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => const Category3Screen(),
-                        ));
-                      },
-                      onPropertyTap: (property) {
-                        debugPrint('Property tapped: ${property['title']}');
-                      },
-                    ),
-
-                    SizedBox(height: 8.h),
-
                     // Animated New Offers Section
                     NewOffersSection(
                       onViewAllTap: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => const Category3Screen(),
-                        ));
+                        debugPrint('View all offers tapped');
                       },
                       onPropertyTap: (property) {
                         debugPrint('Property tapped: ${property['title']}');
@@ -130,6 +106,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       onFavoriteTap: (property) {
                         debugPrint('Favorite toggled for: ${property['title']}');
                       },
+                      isCategory3Screen: true,
                     ),
 
                     SizedBox(height: 24.h),

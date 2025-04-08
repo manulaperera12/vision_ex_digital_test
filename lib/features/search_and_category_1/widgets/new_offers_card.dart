@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vision_ex_digital_assignment_manula/utils/colors.dart';
@@ -9,14 +8,9 @@ class NewOfferCard extends StatelessWidget {
   final VoidCallback? onTap;
   final VoidCallback? onFavoriteTap;
   final bool isFavorite;
+  final bool isCategory3Screen;
 
-  const NewOfferCard({
-    super.key,
-    required this.property,
-    this.onTap,
-    this.onFavoriteTap,
-    this.isFavorite = false,
-  });
+  const NewOfferCard({super.key, required this.property, this.onTap, this.onFavoriteTap, this.isFavorite = false, this.isCategory3Screen = false});
 
   @override
   Widget build(BuildContext context) {
@@ -27,13 +21,7 @@ class NewOfferCard extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.r),
           // color: kWhiteColor,
-          boxShadow: [
-            BoxShadow(
-              color: kBlackColor.withOpacity(0.05),
-              blurRadius: 10.r,
-              offset: const Offset(0, 3),
-            ),
-          ],
+          boxShadow: [BoxShadow(color: kBlackColor.withOpacity(0.05), blurRadius: 10.r, offset: const Offset(0, 3))],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,12 +40,9 @@ class NewOfferCard extends StatelessWidget {
                         height: 230.h,
                         width: double.infinity,
                         fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) => Container(
-                          height: 230.h,
-                          width: double.infinity,
-                          color: kGreyColor.withOpacity(0.3),
-                          child: Icon(Icons.image, size: 50.sp, color: kGreyColor),
-                        ),
+                        errorBuilder:
+                            (context, error, stackTrace) =>
+                                Container(height: 230.h, width: double.infinity, color: kGreyColor.withOpacity(0.3), child: Icon(Icons.image, size: 50.sp, color: kGreyColor)),
                       ),
 
                       // Combined overlay with rounded corners
@@ -69,12 +54,7 @@ class NewOfferCard extends StatelessWidget {
                           gradient: LinearGradient(
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
-                            colors: [
-                              Colors.black.withOpacity(0.1),
-                              Colors.transparent,
-                              Colors.transparent,
-                              Colors.black.withOpacity(0.1),
-                            ],
+                            colors: [Colors.black.withOpacity(0.1), Colors.transparent, Colors.transparent, Colors.black.withOpacity(0.1)],
                             stops: const [0.0, 0.3, 0.7, 1.0],
                           ),
                         ),
@@ -87,46 +67,42 @@ class NewOfferCard extends StatelessWidget {
                 Positioned(
                   top: 20.h,
                   right: 20.w,
-                  child: GestureDetector(
-                    onTap: onFavoriteTap,
-                    child: Icon(
-                      isFavorite ? Icons.favorite : Icons.favorite_border,
-                      color: isFavorite ? kRedColor : kWhiteColor,
-                      size: 24.sp,
-                    ),
-                  ),
+                  child: GestureDetector(onTap: onFavoriteTap, child: Icon(isFavorite ? Icons.favorite : Icons.favorite_border, color: isFavorite ? kRedColor : kWhiteColor, size: 24.sp)),
                 ),
 
                 // Price tag
                 Positioned(
                   bottom: 16.h,
-                  right: 16.w,
-                  child: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
-                    decoration: BoxDecoration(
-                      color: kWhiteColor,
-                      borderRadius: BorderRadius.circular(16.r),
-                      boxShadow: [
-                        BoxShadow(
-                          color: kBlackColor.withOpacity(0.1),
-                          blurRadius: 4.r,
-                          offset: const Offset(0, 2),
+                  right: !isCategory3Screen ? 16.w : null,
+                  left: isCategory3Screen ? 16.w : null,
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+                        decoration: BoxDecoration(
+                          color: kWhiteColor,
+                          borderRadius: BorderRadius.circular(16.r),
+                          boxShadow: [BoxShadow(color: kBlackColor.withOpacity(0.1), blurRadius: 4.r, offset: const Offset(0, 2))],
                         ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          '\$',
-                          style: kRoboto600(context, fontSize: 12.sp),
+                        child: Row(children: [Text(!isCategory3Screen ? "\$ ${property['price']}" : "${property['bedRooms']} Beds", style: kRoboto600(context, fontSize: 12.sp))]),
+                      ),
+
+                      Visibility(
+                        visible: isCategory3Screen,
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 5.0.w),
+                          child: Container(
+                            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
+                            decoration: BoxDecoration(
+                              color: kWhiteColor,
+                              borderRadius: BorderRadius.circular(16.r),
+                              boxShadow: [BoxShadow(color: kBlackColor.withOpacity(0.1), blurRadius: 4.r, offset: const Offset(0, 2))],
+                            ),
+                            child: Row(children: [Text("${property['bathrooms']} Bathrooms", style: kRoboto600(context, fontSize: 12.sp))]),
+                          ),
                         ),
-                        SizedBox(width: 2.w),
-                        Text(
-                          property['price'],
-                          style: kRoboto600(context, fontSize: 12.sp),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -137,32 +113,36 @@ class NewOfferCard extends StatelessWidget {
               padding: EdgeInsets.only(top: 10.h, bottom: 8.h, left: 3.w, right: 3.w),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Title
-                  Text(
-                    property['title'],
-                    style: kRoboto700(context, fontSize: 16.sp),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(property['title'], style: kRoboto600(context, fontSize: 16.sp)),
+                      isCategory3Screen ? Text(property['address'], style: kRoboto400(context, fontSize: 12.sp, color: kGreyColorText)) : SizedBox(),
+                    ],
                   ),
 
                   // Rating
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.star_border_rounded,
-                        color: kButtonGreenColor,
-                        size: 18.sp,
-                      ),
-                      SizedBox(width: 4.w),
-                      Text(
-                        property['rating'].toString(),
-                        style: kRoboto700(context, fontSize: 14.sp),
-                      ),
-                      SizedBox(width: 4.w),
-                      Text(
-                        '(${property['reviews']} Reviews)',
-                        style: kRoboto400(context, fontSize: 14.sp, color: kGreyColorText),
-                      ),
-                    ],
+                  !isCategory3Screen
+                      ? Row(
+                        children: [
+                          Icon(Icons.star_border_rounded, color: kButtonGreenColor, size: 18.sp),
+                          SizedBox(width: 4.w),
+                          Text(property['rating'].toString(), style: kRoboto700(context, fontSize: 14.sp)),
+                          SizedBox(width: 4.w),
+                          Text('(${property['reviews']} Reviews)', style: kRoboto400(context, fontSize: 14.sp, color: kGreyColorText)),
+                        ],
+                      )
+                      : RichText(
+                    text: TextSpan(
+                      children: <TextSpan>[
+                        TextSpan(text: '\$ ${property['price']} ', style: kRoboto700(context, fontSize: 22.sp)),
+                        TextSpan(text: '/mo', style: kRoboto600(context, fontSize: 14.sp)),
+                      ],
+                    ),
                   ),
                 ],
               ),
