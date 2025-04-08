@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vision_ex_digital_assignment_manula/core/reusable/custom_header.dart';
-import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/featured_section.dart';
-import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/new_offers_section.dart';
 import 'package:vision_ex_digital_assignment_manula/utils/colors.dart';
 
 import '../../utils/font.dart';
+import '../search_and_category_1/presentation/widgets/new_offers_section.dart';
 
 class Category3Screen extends StatefulWidget {
   const Category3Screen({super.key});

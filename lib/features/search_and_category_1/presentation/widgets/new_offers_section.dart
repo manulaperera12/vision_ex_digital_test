@@ -1,9 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../utils/colors.dart';
-import '../../../utils/font.dart';
-import '../../../core/reusable/new_offers_card.dart';
+import '../../../../core/reusable/new_offers_card.dart';
+import '../../../../utils/colors.dart';
+import '../../../../utils/font.dart';
 
 class NewOffersSection extends StatelessWidget {
   final VoidCallback? onViewAllTap;
