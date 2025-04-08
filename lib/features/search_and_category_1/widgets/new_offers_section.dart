@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../utils/colors.dart';
 import '../../../utils/font.dart';
-import 'new_offers_card.dart';
+import '../../../core/reusable/new_offers_card.dart';
 
 class NewOffersSection extends StatelessWidget {
   final VoidCallback? onViewAllTap;

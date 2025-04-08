@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../utils/colors.dart';
-import '../../utils/font.dart';
+import '../../../utils/colors.dart';
+import '../../../utils/font.dart';
 
 class PropertyCard extends StatelessWidget {
   final Map<String, String> property;
@@ -67,11 +67,7 @@ class PropertyCard extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          '\$',
-                          style: kRoboto700(context, fontSize: 14.sp),
-                        ),
-                        Text(
-                          property['price']!,
+                          "\$ ${property['price']!}",
                           style: kRoboto700(context, fontSize: 12.sp),
                         ),
                       ],
