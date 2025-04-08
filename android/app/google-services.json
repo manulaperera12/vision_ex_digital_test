@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "417723276904",
+    "project_id": "visionex-digital-assignment",
+    "storage_bucket": "visionex-digital-assignment.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417723276904:android:1d06c2d07fd5294c4825dd",
+        "android_client_info": {
+          "package_name": "com.example.vision_ex_digital_assignment_manula"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO5E_C5tz54zhoiICszgRFuKvCw4XXZ_g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
