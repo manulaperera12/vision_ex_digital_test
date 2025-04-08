@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/custom_header.dart';
+import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/featured_section.dart';
+import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/new_offers_card.dart';
+import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/new_offers_section.dart';
+import 'package:vision_ex_digital_assignment_manula/utils/colors.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -48,6 +52,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: kWhiteColor,
       body: Column(
         children: [
           // Animated header
@@ -69,18 +74,40 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             ),
           ),
 
-          // Rest of the screen content
+          // Content area - needs to be in Expanded
           Expanded(
-            child: Container(
-              color: Colors.grey.shade100,
-              child: Center(
-                child: Text(
-                  'Content goes here',
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.bold,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: 4.h),
+
+                  // Featured section
+                  FeaturedSection(
+                    onViewAllTap: () {
+                      debugPrint('View all featured properties tapped');
+                    },
+                    onPropertyTap: (property) {
+                      debugPrint('Property tapped: ${property['title']}');
+                    },
                   ),
-                ),
+
+                  SizedBox(height: 8.h),
+
+                  // New offers section
+                  NewOffersSection(
+                    onViewAllTap: () {
+                      debugPrint('View all offers tapped');
+                    },
+                    onPropertyTap: (property) {
+                      debugPrint('Property tapped: ${property['title']}');
+                    },
+                    onFavoriteTap: (property) {
+                      debugPrint('Favorite toggled for: ${property['title']}');
+                    },
+                  ),
+
+                  SizedBox(height: 24.h),
+                ],
               ),
             ),
           ),
