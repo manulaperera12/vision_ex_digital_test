@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/custom_header.dart';
 import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/featured_section.dart';
-import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/new_offers_card.dart';
 import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/widgets/new_offers_section.dart';
 import 'package:vision_ex_digital_assignment_manula/utils/colors.dart';
 
@@ -13,39 +12,58 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
-  // Animation controller
-  late AnimationController _animationController;
-  late Animation<Offset> _slideAnimation;
+class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  // Animation controllers
+  late AnimationController _headerAnimationController;
+  late Animation<Offset> _headerSlideAnimation;
+  late AnimationController _offersAnimationController;
+  late Animation<Offset> _offersSlideAnimation;
 
   @override
   void initState() {
     super.initState();
 
-    // Initialize animation controller
-    _animationController = AnimationController(
+    // Initialize header animation controller
+    _headerAnimationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 2000),
+      duration: const Duration(milliseconds: 4000),
     );
 
-    // Create slide animation
-    _slideAnimation = Tween<Offset>(
+    // Create slide animation for header
+    _headerSlideAnimation = Tween<Offset>(
       begin: const Offset(0, -1), // Start from above the screen
       end: Offset.zero,           // End at normal position
     ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeOutBack, // Use a bouncy curve for better effect
+      parent: _headerAnimationController,
+      curve: Curves.easeOutBack,
     ));
 
-    // Start the animation after the first frame is built
+    // Initialize offers animation controller
+    _offersAnimationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 4000),
+    );
+
+    // Create slide animation for offers
+    _offersSlideAnimation = Tween<Offset>(
+      begin: const Offset(0, 0.2), // Start from below the screen
+      end: Offset.zero,           // End at normal position
+    ).animate(CurvedAnimation(
+      parent: _offersAnimationController,
+      curve: Curves.easeOutBack,
+    ));
+
+    // Start the header animation after the first frame is built
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _animationController.forward();
+      _headerAnimationController.forward();
+      _offersAnimationController.forward(); // Start offers animation
     });
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
+    _headerAnimationController.dispose();
+    _offersAnimationController.dispose();
     super.dispose();
   }
 
@@ -57,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
         children: [
           // Animated header
           SlideTransition(
-            position: _slideAnimation,
+            position: _headerSlideAnimation,
             child: CustomHeader(
               userName: 'Stanislav',
               avatarText: 'S',
@@ -74,40 +92,42 @@ class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateM
             ),
           ),
 
-          // Content area - needs to be in Expanded
           Expanded(
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: 4.h),
+              child: SlideTransition(
+                position: _offersSlideAnimation,
+                child: Column(
+                  children: [
+                    SizedBox(height: 4.h),
 
-                  // Featured section
-                  FeaturedSection(
-                    onViewAllTap: () {
-                      debugPrint('View all featured properties tapped');
-                    },
-                    onPropertyTap: (property) {
-                      debugPrint('Property tapped: ${property['title']}');
-                    },
-                  ),
+                    // Featured section
+                    FeaturedSection(
+                      onViewAllTap: () {
+                        debugPrint('View all featured properties tapped');
+                      },
+                      onPropertyTap: (property) {
+                        debugPrint('Property tapped: ${property['title']}');
+                      },
+                    ),
 
-                  SizedBox(height: 8.h),
+                    SizedBox(height: 8.h),
 
-                  // New offers section
-                  NewOffersSection(
-                    onViewAllTap: () {
-                      debugPrint('View all offers tapped');
-                    },
-                    onPropertyTap: (property) {
-                      debugPrint('Property tapped: ${property['title']}');
-                    },
-                    onFavoriteTap: (property) {
-                      debugPrint('Favorite toggled for: ${property['title']}');
-                    },
-                  ),
+                    // Animated New Offers Section
+                    NewOffersSection(
+                      onViewAllTap: () {
+                        debugPrint('View all offers tapped');
+                      },
+                      onPropertyTap: (property) {
+                        debugPrint('Property tapped: ${property['title']}');
+                      },
+                      onFavoriteTap: (property) {
+                        debugPrint('Favorite toggled for: ${property['title']}');
+                      },
+                    ),
 
-                  SizedBox(height: 24.h),
-                ],
+                    SizedBox(height: 24.h),
+                  ],
+                ),
               ),
             ),
           ),
