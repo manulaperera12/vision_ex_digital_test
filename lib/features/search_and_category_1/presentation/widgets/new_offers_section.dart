@@ -15,43 +15,6 @@ class NewOffersSection extends StatelessWidget {
 
   const NewOffersSection({super.key, this.onViewAllTap, this.onPropertyTap, this.onFavoriteTap, this.isCategory3Screen = false, required this.newOffers, required this.popularRentOffers});
 
-  // Hardcoded property data
-  // static final List<Map<String, dynamic>> _newOffers = [
-  //   {'image': 'https://images.unsplash.com/photo-1570129477492-45c003edd2be', 'price': '1250', 'title': 'Apartment 3 rooms', 'rating': 4.9, 'reviews': 29, 'isFavorite': false},
-  //   {'image': 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9', 'price': '950', 'title': 'House with garden', 'rating': 4.7, 'reviews': 18, 'isFavorite': true},
-  //   {'image': 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750', 'price': '1450', 'title': 'Modern villa', 'rating': 5.0, 'reviews': 42, 'isFavorite': false},
-  // ];
-  //
-  // static final List<Map<String, dynamic>> _popularRentOffers = [
-  //   {
-  //     'image': 'https://images.unsplash.com/photo-1570129477492-45c003edd2be',
-  //     'bedRooms': '3',
-  //     'bathrooms': '3',
-  //     'title': 'Apartment 7 rooms',
-  //     'price': '950',
-  //     'isFavorite': false,
-  //     'address': 'Russia, Moscow',
-  //   },
-  //   {
-  //     'image': 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9',
-  //     'bedRooms': '3',
-  //     'bathrooms': '6',
-  //     'price': '950',
-  //     'title': 'House with garden',
-  //     'isFavorite': true,
-  //     'address': 'Russia, Moscow',
-  //   },
-  //   {
-  //     'image': 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750',
-  //     'bedRooms': '3',
-  //     'bathrooms': '7',
-  //     'price': '1450',
-  //     'title': 'Modern villa',
-  //     'isFavorite': false,
-  //     'address': 'Russia, Moscow',
-  //   },
-  // ];
-
   @override
   Widget build(BuildContext context) {
     return Column(

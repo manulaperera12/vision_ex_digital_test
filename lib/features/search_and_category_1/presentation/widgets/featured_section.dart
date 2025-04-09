@@ -16,29 +16,6 @@ class FeaturedSection extends StatelessWidget {
     required this.featuredProperties,
   });
 
-  // Hardcoded property data using a simple List of Maps
-  static final List<Map<String, String>> _featuredProperties = [
-    {
-      'image': 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750',
-      'price': '580',
-      'title': 'Rent 3 room',
-      'subtitle': 'apartment in the center',
-    },
-    {
-      'image': 'https://images.unsplash.com/photo-1570129477492-45c003edd2be',
-      'price': '750',
-      'title': 'Apartment',
-      'subtitle': '4 rooms',
-    },
-    {
-      'image': 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c',
-      'price': '680',
-      'title': 'Apartment in city',
-      'subtitle': 'center',
-    },
-  ];
-
-
 
   @override
   Widget build(BuildContext context) {

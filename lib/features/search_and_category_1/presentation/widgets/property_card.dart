@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/data/model/data_model.dart';
 import '../../../../utils/colors.dart';
 import '../../../../utils/font.dart';
@@ -41,12 +43,21 @@ class PropertyCard extends StatelessWidget {
                 // Image
                 ClipRRect(
                   borderRadius: BorderRadius.circular(24.r),
-                  child: Image.network(
-                    property.image,
+                  child: CachedNetworkImage(
+                    imageUrl: property.image,
                     height: 150.h,
                     width: 150.w,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => Container(
+                    placeholder: (context, url) => Shimmer.fromColors(
+                      baseColor: kBaseColor,
+                      highlightColor: kHighlightColor,
+                      child: Container(
+                        height: 150.h,
+                        width: 150.w,
+                        color: kWhiteColor,
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => Container(
                       height: 140.h,
                       width: 170.w,
                       color: kGreyColor.withOpacity(0.3),

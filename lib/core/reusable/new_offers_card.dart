@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:vision_ex_digital_assignment_manula/utils/colors.dart';
 import 'package:vision_ex_digital_assignment_manula/utils/font.dart';
 
@@ -37,14 +39,26 @@ class NewOfferCard extends StatelessWidget {
                   child: Stack(
                     children: [
                       // Base image
-                      Image.network(
-                        property.image,
+                      CachedNetworkImage(
+                        imageUrl: property.image,
                         height: 230.h,
                         width: double.infinity,
                         fit: BoxFit.cover,
-                        errorBuilder:
-                            (context, error, stackTrace) =>
-                                Container(height: 230.h, width: double.infinity, color: kGreyColor.withOpacity(0.3), child: Icon(Icons.image, size: 50.sp, color: kGreyColor)),
+                        placeholder: (context, url) => Shimmer.fromColors(
+                          baseColor: kBaseColor,
+                          highlightColor: kHighlightColor,
+                          child: Container(
+                            height: 230.h,
+                            width: double.infinity,
+                            color: kWhiteColor,
+                          ),
+                        ),
+                        errorWidget: (context, url, error) => Container(
+                          height: 230.h,
+                          width: double.infinity,
+                          color: kGreyColor.withOpacity(0.3),
+                          child: Icon(Icons.image, size: 50.sp, color: kGreyColor),
+                        ),
                       ),
 
                       // Combined overlay with rounded corners
