@@ -151,8 +151,6 @@ class _SearchAndCategory1ScreenState extends State<SearchAndCategory1Screen> wit
                             featuredProperties: state.dataList,
                           ),
 
-                          SizedBox(height: 8.h),
-
                           // Animated New Offers Section
                           NewOffersSection(
                             onViewAllTap: () {
