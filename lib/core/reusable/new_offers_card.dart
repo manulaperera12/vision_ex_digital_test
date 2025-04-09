@@ -88,9 +88,9 @@ class NewOfferCard extends StatelessWidget {
 
                 // Price tag
                 Positioned(
-                  bottom: 16.h,
-                  right: !isCategory3Screen ? 16.w : null,
-                  left: isCategory3Screen ? 16.w : null,
+                  bottom: 10.h,
+                  right: !isCategory3Screen ? 10.w : null,
+                  left: isCategory3Screen ? 10.w : null,
                   child: Row(
                     children: [
                       Container(
@@ -137,7 +137,10 @@ class NewOfferCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(property.title, style: kRoboto600(context, fontSize: 16.sp)),
-                      isCategory3Screen ? Text(property.location, style: kRoboto400(context, fontSize: 12.sp, color: kGreyColorText)) : SizedBox(),
+                      isCategory3Screen ? Padding(
+                        padding: EdgeInsets.only(top: 5.0.h),
+                        child: Text(property.location, style: kRoboto400(context, fontSize: 12.sp, color: kGreyColorText)),
+                      ) : SizedBox(),
                     ],
                   ),
 
@@ -147,9 +150,9 @@ class NewOfferCard extends StatelessWidget {
                         children: [
                           Icon(Icons.star_border_rounded, color: kButtonGreenColor, size: 18.sp),
                           SizedBox(width: 4.w),
-                          Text(property.reviewOverall.toString(), style: kRoboto700(context, fontSize: 14.sp)),
+                          Text(property.reviewOverall.toString(), style: kRoboto700(context, fontSize: 12.sp)),
                           SizedBox(width: 4.w),
-                          Text('(${property.totalReviewCount} Reviews)', style: kRoboto400(context, fontSize: 14.sp, color: kGreyColorText)),
+                          Text('(${property.totalReviewCount} Reviews)', style: kRoboto400(context, fontSize: 12.sp, color: kGreyColorText)),
                         ],
                       )
                       : RichText(

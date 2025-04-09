@@ -27,8 +27,8 @@ class NewOffersSection extends StatelessWidget {
           child: Row(
             mainAxisAlignment: !isCategory3Screen ? MainAxisAlignment.spaceBetween : MainAxisAlignment.center,
             children: [
-              Text(!isCategory3Screen ? 'New offers' : "Popular Rent Offers", style: kRoboto700(context, fontSize: 20.sp)),
-              Visibility(visible: !isCategory3Screen, child: GestureDetector(onTap: onViewAllTap, child: Text('View all', style: kRoboto400(context, fontSize: 14.sp, color: kGreyColorText)))),
+              Text(!isCategory3Screen ? 'New offers' : "Popular rent offers", style: kRoboto700(context, fontSize: 20.sp)),
+              Visibility(visible: !isCategory3Screen, child: GestureDetector(onTap: onViewAllTap, child: Text('View all', style: kRoboto400(context, fontSize: 12.sp, color: kGreyColorText)))),
             ],
           ),
         ),
