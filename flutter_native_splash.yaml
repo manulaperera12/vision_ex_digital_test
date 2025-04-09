@@ -1,0 +1,30 @@
+flutter_native_splash:
+  # Background color
+#  color: "#000000"
+  # Or background image
+  background_image: "assets/images/splash_bg_large.png"
+
+  # Image to display in the center of the splash screen
+  #  image: assets/images/logo4x.png
+
+  # Optional parameters:
+  # branding: assets/branding.png  # Bottom branding
+  # branding_mode: bottom
+
+  # For dark mode (if your app supports it)
+  # color_dark: "#121212"
+  # image_dark: assets/splash_logo_dark.png
+
+  # Android 12 specific settings
+  android_12:
+#    image: assets/images/logo4x.png
+    icon_background_color: "#000000"
+    # image_dark: assets/splash_logo_dark.png
+    # icon_background_color_dark: "#121212"
+    background_image: "assets/images/splash_bg_large.png"
+
+  # Web settings
+  web: false
+
+  # Full screen mode
+  fullscreen: true

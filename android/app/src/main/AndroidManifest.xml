@@ -7,6 +7,10 @@
         android:label="vision_ex_digital_assignment_manula"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data
+            android:name="io.flutter.embedding.android.SplashScreenDrawable"
+            android:resource="@drawable/launch_background"
+            />
         <activity
             android:name=".MainActivity"
             android:exported="true"
