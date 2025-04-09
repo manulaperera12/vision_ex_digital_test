@@ -9,15 +9,19 @@ import '../../../../utils/font.dart';
 class PropertyCard extends StatelessWidget {
   final DataModel property;
   final VoidCallback? onTap;
+  final bool isLoading;
 
   const PropertyCard({
     super.key,
     required this.property,
     this.onTap,
+    this.isLoading = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("#3213 isLoading: $isLoading");
+
     return GestureDetector(
       onTap: onTap,
       child: Container(

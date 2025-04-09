@@ -8,17 +8,20 @@ class FeaturedSection extends StatelessWidget {
   final VoidCallback? onViewAllTap;
   final Function(DataModel)? onPropertyTap;
   final List<DataModel> featuredProperties;
+  final bool isLoading;
 
   const FeaturedSection({
     super.key,
     this.onViewAllTap,
     this.onPropertyTap,
     required this.featuredProperties,
+    this.isLoading = false,
   });
 
 
   @override
   Widget build(BuildContext context) {
+    debugPrint("#3213 isLoading FeaturedSection: $isLoading");
     return Column(
       children: [
         // Header row
@@ -59,6 +62,7 @@ class FeaturedSection extends StatelessWidget {
                   onTap: onPropertyTap != null
                       ? () => onPropertyTap!(featuredProperties[index])
                       : null,
+                  isLoading: isLoading,
                 ),
               );
             },

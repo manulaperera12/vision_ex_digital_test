@@ -88,28 +88,26 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   Column(
                     children: [
                       // Option buttons
-                      Padding(
-                        padding: EdgeInsets.only(left: 20.0.w),
-                        child: SizedBox(
-                          height: 172.h,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: optionsList.length,
-                            itemBuilder: (context, index) {
-                              final option = optionsList[index];
-                              return Padding(
-                                padding: EdgeInsets.only(right: index < optionsList.length - 1 ? 12.w : 20.w),
-                                child: OptionsContainer(
-                                  color: option['color'],
-                                  icon: option['icon'],
-                                  label: option['label'],
-                                  onTap: () {
-                                    debugPrint('#32432 option: ${option['label']} tapped');
-                                  },
-                                ),
-                              );
-                            },
-                          ),
+                      SizedBox(
+                        height: 172.h,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          padding: EdgeInsets.only(left: 20.0.w, right: 20.0.w),
+                          itemCount: optionsList.length,
+                          itemBuilder: (context, index) {
+                            final option = optionsList[index];
+                            return Padding(
+                              padding: EdgeInsets.only(right: index < optionsList.length - 1 ? 12.w : 0),
+                              child: OptionsContainer(
+                                color: option['color'],
+                                icon: option['icon'],
+                                label: option['label'],
+                                onTap: () {
+                                  debugPrint('#32432 option: ${option['label']} tapped');
+                                },
+                              ),
+                            );
+                          },
                         ),
                       ),
 

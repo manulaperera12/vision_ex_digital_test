@@ -3,10 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vision_ex_digital_assignment_manula/core/reusable/custom_header.dart';
 import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/presentation/bloc/data_bloc.dart';
+import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/presentation/widgets/feature_section_shimmer.dart';
 import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/presentation/widgets/featured_section.dart';
 import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/presentation/widgets/new_offers_section.dart';
+import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/presentation/widgets/new_offers_shimmers.dart';
 import 'package:vision_ex_digital_assignment_manula/utils/colors.dart';
 
+import '../../../core/reusable/custom_header_shimmers.dart';
 import '../../../injector.dart';
 import '../../category_3/category_3_screen.dart';
 
@@ -176,7 +179,64 @@ class _SearchAndCategory1ScreenState extends State<SearchAndCategory1Screen> wit
               ],
             );
           } else if (state.status == DataStateStatus.initial || state.status == DataStateStatus.loading) {
-            return const Center(child: CircularProgressIndicator());
+            return Column(
+              children: [
+                // SlideTransition(
+                //   position: _headerSlideAnimation,
+                //   child: CustomHeaderShimmer(
+                //     isCategory3Screen: false,
+                //   ),
+                // ),
+
+                // Animated header
+                SlideTransition(
+                  position: _headerSlideAnimation,
+                  child: CustomHeader(
+                    userName: 'Stanislav',
+                    avatarText: 'S',
+                    hasNotification: true,
+                    onMenuTap: () {
+                      debugPrint('Menu tapped');
+                    },
+                    onAvatarTap: () {
+                      debugPrint('Avatar tapped');
+                    },
+                    onSearchTap: () {
+                      debugPrint('Search bar tapped');
+                    },
+                    backgroundColor: kYellowColor,
+                  ),
+                ),
+
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: SlideTransition(
+                      position: _offersSlideAnimation,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 4.h),
+
+                          // Featured section shimmers
+                          FeaturedSectionShimmer(
+                            itemCount: 4,
+                          ),
+
+                          SizedBox(height: 8.h),
+
+                          // Animated New Offers Section
+                          NewOffersSectionShimmer(
+                            isCategory3Screen: false,
+                            itemCount: 3,
+                          ),
+
+                          SizedBox(height: 24.h),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
           } else {
             return Center(
               child: Column(
