@@ -56,7 +56,7 @@ class _SearchAndCategory1ScreenState extends State<SearchAndCategory1Screen> wit
     // Create slide animation for header
     _headerSlideAnimation = Tween<Offset>(
       begin: const Offset(0, -1), // Start from above the screen
-      end: Offset.zero,           // End at normal position
+      end: Offset.zero, // End at normal position
     ).animate(CurvedAnimation(
       parent: _headerAnimationController,
       curve: Curves.easeOutBack,
@@ -71,7 +71,7 @@ class _SearchAndCategory1ScreenState extends State<SearchAndCategory1Screen> wit
     // Create slide animation for offers
     _offersSlideAnimation = Tween<Offset>(
       begin: const Offset(0, 0.1), // Start from below the screen
-      end: Offset.zero,           // End at normal position
+      end: Offset.zero, // End at normal position
     ).animate(CurvedAnimation(
       parent: _offersAnimationController,
       curve: Curves.easeOutBack,
@@ -95,72 +95,99 @@ class _SearchAndCategory1ScreenState extends State<SearchAndCategory1Screen> wit
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kWhiteColor,
-      body: Column(
-        children: [
-          // Animated header
-          SlideTransition(
-            position: _headerSlideAnimation,
-            child: CustomHeader(
-              userName: 'Stanislav',
-              avatarText: 'S',
-              hasNotification: true,
-              onMenuTap: () {
-                debugPrint('Menu tapped');
-              },
-              onAvatarTap: () {
-                debugPrint('Avatar tapped');
-              },
-              onSearchTap: () {
-                debugPrint('Search bar tapped');
-              },
-              backgroundColor: kYellowColor,
-            ),
-          ),
-
-          Expanded(
-            child: SingleChildScrollView(
-              child: SlideTransition(
-                position: _offersSlideAnimation,
-                child: Column(
-                  children: [
-                    SizedBox(height: 4.h),
-
-                    // Featured section
-                    FeaturedSection(
-                      onViewAllTap: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => const Category3Screen(),
-                        ));
-                      },
-                      onPropertyTap: (property) {
-                        debugPrint('Property tapped: ${property['title']}');
-                      },
-                    ),
-
-                    SizedBox(height: 8.h),
-
-                    // Animated New Offers Section
-                    NewOffersSection(
-                      onViewAllTap: () {
-                        Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => const Category3Screen(),
-                        ));
-                      },
-                      onPropertyTap: (property) {
-                        debugPrint('Property tapped: ${property['title']}');
-                      },
-                      onFavoriteTap: (property) {
-                        debugPrint('Favorite toggled for: ${property['title']}');
-                      },
-                    ),
-
-                    SizedBox(height: 24.h),
-                  ],
+      body: BlocBuilder<DataBloc, DataState>(
+        buildWhen: (prev, current) {
+          if (prev.status == DataStateStatus.initial && current.status == DataStateStatus.loading) {
+            return false;
+          } else {
+            return true;
+          }
+        },
+        builder: (context, state) {
+          if (state.status == DataStateStatus.success) {
+            return Column(
+              children: [
+                // Animated header
+                SlideTransition(
+                  position: _headerSlideAnimation,
+                  child: CustomHeader(
+                    userName: 'Stanislav',
+                    avatarText: 'S',
+                    hasNotification: true,
+                    onMenuTap: () {
+                      debugPrint('Menu tapped');
+                    },
+                    onAvatarTap: () {
+                      debugPrint('Avatar tapped');
+                    },
+                    onSearchTap: () {
+                      debugPrint('Search bar tapped');
+                    },
+                    backgroundColor: kYellowColor,
+                  ),
                 ),
+
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: SlideTransition(
+                      position: _offersSlideAnimation,
+                      child: Column(
+                        children: [
+                          SizedBox(height: 4.h),
+
+                          // Featured section
+                          FeaturedSection(
+                            onViewAllTap: () {
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => Category3Screen(),
+                              ));
+                            },
+                            onPropertyTap: (property) {
+                              debugPrint('Property tapped: ${property.title}');
+                            },
+                            featuredProperties: state.dataList ?? [],
+                          ),
+
+                          SizedBox(height: 8.h),
+
+                          // Animated New Offers Section
+                          NewOffersSection(
+                            onViewAllTap: () {
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => const Category3Screen(),
+                              ));
+                            },
+                            onPropertyTap: (property) {
+                              // debugPrint('Property tapped: ${property}');
+                            },
+                            onFavoriteTap: (property) {
+                              // debugPrint('Favorite toggled for: ${property['title']}');
+                            },
+                            // properties: state.newOffers ?? [], // Add properties from state with fallback
+                          ),
+
+                          SizedBox(height: 24.h),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          } else if (state.status == DataStateStatus.initial || state.status == DataStateStatus.loading) {
+            return const Center(child: CircularProgressIndicator());
+          } else {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text('Error loading data. Please try again later.'),
+                  const SizedBox(height: 16),
+                ],
               ),
-            ),
-          ),
-        ],
+            );
+          }
+        },
       ),
     );
   }

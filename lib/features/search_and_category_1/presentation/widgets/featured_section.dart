@@ -2,15 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/presentation/widgets/property_card.dart';
 import '../../../../utils/font.dart';
+import '../../data/model/data_model.dart';
 
 class FeaturedSection extends StatelessWidget {
   final VoidCallback? onViewAllTap;
-  final Function(Map<String, String>)? onPropertyTap;
+  final Function(DataModel)? onPropertyTap;
+  final List<DataModel> featuredProperties;
 
   const FeaturedSection({
     super.key,
     this.onViewAllTap,
     this.onPropertyTap,
+    required this.featuredProperties,
   });
 
   // Hardcoded property data using a simple List of Maps
@@ -68,16 +71,16 @@ class FeaturedSection extends StatelessWidget {
           child: ListView.builder(
             padding: EdgeInsets.symmetric(horizontal: 16.w),
             scrollDirection: Axis.horizontal,
-            itemCount: _featuredProperties.length,
+            itemCount: featuredProperties.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: EdgeInsets.only(
-                  right: index < _featuredProperties.length - 1 ? 12.w : 0,
+                  right: index < featuredProperties.length - 1 ? 12.w : 0,
                 ),
                 child: PropertyCard(
-                  property: _featuredProperties[index],
+                  property: featuredProperties[index],
                   onTap: onPropertyTap != null
-                      ? () => onPropertyTap!(_featuredProperties[index])
+                      ? () => onPropertyTap!(featuredProperties[index])
                       : null,
                 ),
               );

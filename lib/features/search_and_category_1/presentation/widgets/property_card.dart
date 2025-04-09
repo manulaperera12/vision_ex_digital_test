@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:vision_ex_digital_assignment_manula/features/search_and_category_1/data/model/data_model.dart';
 import '../../../../utils/colors.dart';
 import '../../../../utils/font.dart';
 
 class PropertyCard extends StatelessWidget {
-  final Map<String, String> property;
+  final DataModel property;
   final VoidCallback? onTap;
 
   const PropertyCard({
@@ -41,7 +42,7 @@ class PropertyCard extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(24.r),
                   child: Image.network(
-                    property['image']!,
+                    property.image,
                     height: 150.h,
                     width: 150.w,
                     fit: BoxFit.cover,
@@ -67,7 +68,7 @@ class PropertyCard extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "\$ ${property['price']!}",
+                          "\$ ${property.price}",
                           style: kRoboto700(context, fontSize: 12.sp),
                         ),
                       ],
@@ -86,18 +87,17 @@ class PropertyCard extends StatelessWidget {
 
                 children: [
                   Text(
-                    property['title']!,
+                    property.title,
                     style: kRoboto600(context, fontSize: 14.sp),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  if (property['subtitle'] != null)
-                    Text(
-                      property['subtitle']!,
-                      style: kRoboto600(context, fontSize: 14.sp),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                  Text(
+                    property.location,
+                    style: kRoboto600(context, fontSize: 14.sp),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ],
               ),
             ),
