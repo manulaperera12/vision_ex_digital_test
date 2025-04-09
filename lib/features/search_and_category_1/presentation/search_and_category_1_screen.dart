@@ -139,13 +139,13 @@ class _SearchAndCategory1ScreenState extends State<SearchAndCategory1Screen> wit
                           FeaturedSection(
                             onViewAllTap: () {
                               Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => Category3Screen(),
+                                builder: (context) => Category3Screen(offerProperties: state.dataList,),
                               ));
                             },
                             onPropertyTap: (property) {
                               debugPrint('Property tapped: ${property.title}');
                             },
-                            featuredProperties: state.dataList ?? [],
+                            featuredProperties: state.dataList,
                           ),
 
                           SizedBox(height: 8.h),
@@ -154,7 +154,7 @@ class _SearchAndCategory1ScreenState extends State<SearchAndCategory1Screen> wit
                           NewOffersSection(
                             onViewAllTap: () {
                               Navigator.push(context, MaterialPageRoute(
-                                builder: (context) => const Category3Screen(),
+                                builder: (context) => Category3Screen(offerProperties: state.dataList,),
                               ));
                             },
                             onPropertyTap: (property) {
@@ -163,7 +163,8 @@ class _SearchAndCategory1ScreenState extends State<SearchAndCategory1Screen> wit
                             onFavoriteTap: (property) {
                               // debugPrint('Favorite toggled for: ${property['title']}');
                             },
-                            // properties: state.newOffers ?? [], // Add properties from state with fallback
+                            newOffers: state.dataList,
+                            popularRentOffers: state.dataList, // for now since we have same data parsing the same list
                           ),
 
                           SizedBox(height: 24.h),

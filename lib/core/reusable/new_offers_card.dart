@@ -3,8 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:vision_ex_digital_assignment_manula/utils/colors.dart';
 import 'package:vision_ex_digital_assignment_manula/utils/font.dart';
 
+import '../../features/search_and_category_1/data/model/data_model.dart';
+
 class NewOfferCard extends StatelessWidget {
-  final Map<String, dynamic> property;
+  final DataModel property;
   final VoidCallback? onTap;
   final VoidCallback? onFavoriteTap;
   final bool isFavorite;
@@ -36,7 +38,7 @@ class NewOfferCard extends StatelessWidget {
                     children: [
                       // Base image
                       Image.network(
-                        property['image'],
+                        property.image,
                         height: 230.h,
                         width: double.infinity,
                         fit: BoxFit.cover,
@@ -84,7 +86,7 @@ class NewOfferCard extends StatelessWidget {
                           borderRadius: BorderRadius.circular(16.r),
                           boxShadow: [BoxShadow(color: kBlackColor.withOpacity(0.1), blurRadius: 4.r, offset: const Offset(0, 2))],
                         ),
-                        child: Row(children: [Text(!isCategory3Screen ? "\$ ${property['price']}" : "${property['bedRooms']} Beds", style: kRoboto600(context, fontSize: 12.sp))]),
+                        child: Row(children: [Text(!isCategory3Screen ? "\$ ${property.price}" : "${property.numberOfBeds} Beds", style: kRoboto600(context, fontSize: 12.sp))]),
                       ),
 
                       Visibility(
@@ -98,7 +100,7 @@ class NewOfferCard extends StatelessWidget {
                               borderRadius: BorderRadius.circular(16.r),
                               boxShadow: [BoxShadow(color: kBlackColor.withOpacity(0.1), blurRadius: 4.r, offset: const Offset(0, 2))],
                             ),
-                            child: Row(children: [Text("${property['bathrooms']} Bathrooms", style: kRoboto600(context, fontSize: 12.sp))]),
+                            child: Row(children: [Text("${property.numberOfBathrooms} Bathrooms", style: kRoboto600(context, fontSize: 12.sp))]),
                           ),
                         ),
                       ),
@@ -120,8 +122,8 @@ class NewOfferCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(property['title'], style: kRoboto600(context, fontSize: 16.sp)),
-                      isCategory3Screen ? Text(property['address'], style: kRoboto400(context, fontSize: 12.sp, color: kGreyColorText)) : SizedBox(),
+                      Text(property.title, style: kRoboto600(context, fontSize: 16.sp)),
+                      isCategory3Screen ? Text(property.location, style: kRoboto400(context, fontSize: 12.sp, color: kGreyColorText)) : SizedBox(),
                     ],
                   ),
 
@@ -131,15 +133,15 @@ class NewOfferCard extends StatelessWidget {
                         children: [
                           Icon(Icons.star_border_rounded, color: kButtonGreenColor, size: 18.sp),
                           SizedBox(width: 4.w),
-                          Text(property['rating'].toString(), style: kRoboto700(context, fontSize: 14.sp)),
+                          Text(property.reviewOverall.toString(), style: kRoboto700(context, fontSize: 14.sp)),
                           SizedBox(width: 4.w),
-                          Text('(${property['reviews']} Reviews)', style: kRoboto400(context, fontSize: 14.sp, color: kGreyColorText)),
+                          Text('(${property.totalReviewCount} Reviews)', style: kRoboto400(context, fontSize: 14.sp, color: kGreyColorText)),
                         ],
                       )
                       : RichText(
                     text: TextSpan(
                       children: <TextSpan>[
-                        TextSpan(text: '\$ ${property['price']} ', style: kRoboto700(context, fontSize: 22.sp)),
+                        TextSpan(text: '\$ ${property.price} ', style: kRoboto700(context, fontSize: 22.sp)),
                         TextSpan(text: '/mo', style: kRoboto600(context, fontSize: 14.sp)),
                       ],
                     ),

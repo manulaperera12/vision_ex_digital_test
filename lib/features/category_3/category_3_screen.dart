@@ -4,10 +4,13 @@ import 'package:vision_ex_digital_assignment_manula/core/reusable/custom_header.
 import 'package:vision_ex_digital_assignment_manula/utils/colors.dart';
 
 import '../../utils/font.dart';
+import '../search_and_category_1/data/model/data_model.dart';
 import '../search_and_category_1/presentation/widgets/new_offers_section.dart';
 
 class Category3Screen extends StatefulWidget {
-  const Category3Screen({super.key});
+  final List<DataModel> offerProperties;
+
+  const Category3Screen({super.key, required this.offerProperties});
 
   @override
   State<Category3Screen> createState() => _Category3ScreenState();
@@ -100,12 +103,14 @@ class _Category3ScreenState extends State<Category3Screen> with TickerProviderSt
                         debugPrint('View all offers tapped');
                       },
                       onPropertyTap: (property) {
-                        debugPrint('Property tapped: ${property['title']}');
+                        debugPrint('Property tapped: ${property.title}');
                       },
                       onFavoriteTap: (property) {
-                        debugPrint('Favorite toggled for: ${property['title']}');
+                        debugPrint('Favorite toggled for: ${property.title}');
                       },
                       isCategory3Screen: true,
+                      newOffers: widget.offerProperties,
+                      popularRentOffers: widget.offerProperties,
                     ),
 
                     SizedBox(height: 24.h),
