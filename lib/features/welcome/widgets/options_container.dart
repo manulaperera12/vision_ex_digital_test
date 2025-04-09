@@ -32,7 +32,7 @@ class OptionsContainer extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(20.w),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
@@ -55,9 +55,9 @@ class OptionsContainer extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 12.h,
-              ),
+              // SizedBox(
+              //   height: 12.h,
+              // ),
               Text(
                 label,
                 style: kRoboto700(context),
