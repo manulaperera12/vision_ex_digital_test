@@ -48,7 +48,7 @@ class CustomHeaderShimmer extends StatelessWidget {
                         width: 50.w,
                         height: 50.h,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: kWhiteColor,
                           borderRadius: BorderRadius.circular(12.r),
                         ),
                       ),
@@ -59,13 +59,13 @@ class CustomHeaderShimmer extends StatelessWidget {
                       children: [
                         // Greeting text shimmer
                         Shimmer.fromColors(
-                          baseColor: Colors.grey[300]!,
-                          highlightColor: Colors.grey[100]!,
+                          baseColor: kBaseColor,
+                          highlightColor: kHighlightColor,
                           child: Container(
                             width: 80.w,
                             height: 20.h,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: kWhiteColor,
                               borderRadius: BorderRadius.circular(10.r),
                             ),
                           ),
@@ -75,11 +75,11 @@ class CustomHeaderShimmer extends StatelessWidget {
 
                         // Avatar shimmer
                         Shimmer.fromColors(
-                          baseColor: Colors.grey[300]!,
-                          highlightColor: Colors.grey[100]!,
+                          baseColor: kBaseColor,
+                          highlightColor: kHighlightColor,
                           child: CircleAvatar(
                             radius: 20.r,
-                            backgroundColor: Colors.white,
+                            backgroundColor: kWhiteColor,
                           ),
                         ),
                       ],
@@ -97,11 +97,11 @@ class CustomHeaderShimmer extends StatelessWidget {
                   Visibility(
                     visible: isCategory3Screen,
                     child: Shimmer.fromColors(
-                      baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!,
+                      baseColor: kBaseColor,
+                      highlightColor: kHighlightColor,
                       child: CircleAvatar(
                         radius: 24.r,
-                        backgroundColor: Colors.white,
+                        backgroundColor: kWhiteColor,
                       ),
                     ),
                   ),
@@ -111,12 +111,12 @@ class CustomHeaderShimmer extends StatelessWidget {
                   // Expanded search bar shimmer
                   Expanded(
                     child: Shimmer.fromColors(
-                      baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!,
+                      baseColor: kBaseColor,
+                      highlightColor: kHighlightColor,
                       child: Container(
                         height: 50.h,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: kWhiteColor,
                           borderRadius: BorderRadius.circular(24.r),
                         ),
                       ),

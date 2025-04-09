@@ -28,14 +28,14 @@ class PropertyCard extends StatelessWidget {
         width: 150.w,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(24.r),
-          color: kWhiteColor,
-          boxShadow: [
-            BoxShadow(
-              color: kBlackColor.withOpacity(0.05),
-              blurRadius: 10,
-              offset: const Offset(0, 3),
-            ),
-          ],
+          // color: kWhiteColor,
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: kBlackColor.withOpacity(0.05),
+          //     blurRadius: 10,
+          //     offset: const Offset(0, 3),
+          //   ),
+          // ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

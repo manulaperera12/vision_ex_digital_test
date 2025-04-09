@@ -64,7 +64,7 @@ class NewOfferCardShimmer extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 16.h),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.r),
-        boxShadow: [BoxShadow(color: kBlackColor.withOpacity(0.05), blurRadius: 10.r, offset: const Offset(0, 3))],
+        // boxShadow: [BoxShadow(color: kBlackColor.withOpacity(0.05), blurRadius: 10.r, offset: const Offset(0, 3))],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,13 +74,13 @@ class NewOfferCardShimmer extends StatelessWidget {
             children: [
               // Image placeholder
               Shimmer.fromColors(
-                baseColor: Colors.grey[300]!,
-                highlightColor: Colors.grey[100]!,
+                baseColor: kBaseColor,
+                highlightColor: kHighlightColor,
                 child: Container(
                   height: 230.h,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: kWhiteColor,
                     borderRadius: BorderRadius.circular(24.r),
                   ),
                 ),
@@ -95,13 +95,13 @@ class NewOfferCardShimmer extends StatelessWidget {
                   children: [
                     // Price/Beds tag shimmer
                     Shimmer.fromColors(
-                      baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!,
+                      baseColor: kBaseColor,
+                      highlightColor: kHighlightColor,
                       child: Container(
                         width: 80.w,
                         height: 28.h,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: kWhiteColor,
                           borderRadius: BorderRadius.circular(16.r),
                         ),
                       ),
@@ -112,13 +112,13 @@ class NewOfferCardShimmer extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(left: 5.0.w),
                         child: Shimmer.fromColors(
-                          baseColor: Colors.grey[300]!,
-                          highlightColor: Colors.grey[100]!,
+                          baseColor: kBaseColor,
+                          highlightColor: kHighlightColor,
                           child: Container(
                             width: 110.w,
                             height: 28.h,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: kWhiteColor,
                               borderRadius: BorderRadius.circular(16.r),
                             ),
                           ),
@@ -133,13 +133,13 @@ class NewOfferCardShimmer extends StatelessWidget {
                 top: 20.h,
                 right: 20.w,
                 child: Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
+                  baseColor: kBaseColor,
+                  highlightColor: kHighlightColor,
                   child: Container(
                     width: 24.w,
                     height: 24.h,
                     decoration: const BoxDecoration(
-                      color: Colors.white,
+                      color: kWhiteColor,
                       shape: BoxShape.circle,
                     ),
                   ),
@@ -161,13 +161,13 @@ class NewOfferCardShimmer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Shimmer.fromColors(
-                      baseColor: Colors.grey[300]!,
-                      highlightColor: Colors.grey[100]!,
+                      baseColor: kBaseColor,
+                      highlightColor: kHighlightColor,
                       child: Container(
                         width: 150.w,
                         height: 16.h,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: kWhiteColor,
                           borderRadius: BorderRadius.circular(4.r),
                         ),
                       ),
@@ -178,13 +178,13 @@ class NewOfferCardShimmer extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.only(top: 4.h),
                         child: Shimmer.fromColors(
-                          baseColor: Colors.grey[300]!,
-                          highlightColor: Colors.grey[100]!,
+                          baseColor: kBaseColor,
+                          highlightColor: kHighlightColor,
                           child: Container(
                             width: 120.w,
                             height: 12.h,
                             decoration: BoxDecoration(
-                              color: Colors.white,
+                              color: kWhiteColor,
                               borderRadius: BorderRadius.circular(4.r),
                             ),
                           ),
@@ -195,8 +195,8 @@ class NewOfferCardShimmer extends StatelessWidget {
 
                 // Rating or price shimmer
                 Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
+                  baseColor: kBaseColor,
+                  highlightColor: kHighlightColor,
                   child: !isCategory3Screen
                       ? Row(
                     children: [
@@ -204,7 +204,7 @@ class NewOfferCardShimmer extends StatelessWidget {
                         width: 18.w,
                         height: 18.h,
                         decoration: const BoxDecoration(
-                          color: Colors.white,
+                          color: kWhiteColor,
                           shape: BoxShape.circle,
                         ),
                       ),
@@ -213,7 +213,7 @@ class NewOfferCardShimmer extends StatelessWidget {
                         width: 20.w,
                         height: 14.h,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: kWhiteColor,
                           borderRadius: BorderRadius.circular(4.r),
                         ),
                       ),
@@ -222,7 +222,7 @@ class NewOfferCardShimmer extends StatelessWidget {
                         width: 80.w,
                         height: 14.h,
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: kWhiteColor,
                           borderRadius: BorderRadius.circular(4.r),
                         ),
                       ),
@@ -232,7 +232,7 @@ class NewOfferCardShimmer extends StatelessWidget {
                     width: 80.w,
                     height: 22.h,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: kWhiteColor,
                       borderRadius: BorderRadius.circular(4.r),
                     ),
                   ),

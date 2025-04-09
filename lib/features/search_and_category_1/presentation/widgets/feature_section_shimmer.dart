@@ -87,14 +87,14 @@ class PropertyCardShimmer extends StatelessWidget {
             children: [
               // Base image shimmer
               Shimmer.fromColors(
-                baseColor: Colors.grey[300]!,
-                highlightColor: Colors.grey[100]!,
+                baseColor: kBaseColor,
+                highlightColor: kHighlightColor,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(24.r),
                   child: Container(
                     height: 150.h,
                     width: 150.w,
-                    color: Colors.white,
+                    color: kWhiteColor,
                   ),
                 ),
               ),
@@ -104,13 +104,13 @@ class PropertyCardShimmer extends StatelessWidget {
                 bottom: 8.h,
                 right: 8.w,
                 child: Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
+                  baseColor: kBaseColor,
+                  highlightColor: kHighlightColor,
                   child: Container(
                     width: 60.w,
                     height: 22.h,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: kWhiteColor,
                       borderRadius: BorderRadius.circular(12.r),
                     ),
                   ),
@@ -128,13 +128,13 @@ class PropertyCardShimmer extends StatelessWidget {
               children: [
                 // Title shimmer
                 Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
+                  baseColor: kBaseColor,
+                  highlightColor: kHighlightColor,
                   child: Container(
                     width: 120.w,
                     height: 14.h,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: kWhiteColor,
                       borderRadius: BorderRadius.circular(4.r),
                     ),
                   ),
@@ -144,13 +144,13 @@ class PropertyCardShimmer extends StatelessWidget {
 
                 // Location shimmer
                 Shimmer.fromColors(
-                  baseColor: Colors.grey[300]!,
-                  highlightColor: Colors.grey[100]!,
+                  baseColor: kBaseColor,
+                  highlightColor: kHighlightColor,
                   child: Container(
                     width: 100.w,
                     height: 14.h,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: kWhiteColor,
                       borderRadius: BorderRadius.circular(4.r),
                     ),
                   ),
